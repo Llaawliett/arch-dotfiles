@@ -299,6 +299,18 @@ hl.bind(secondMod .. " + right", hl.dsp.window.move({ direction = "right" }))
 hl.bind(secondMod .. " + up", hl.dsp.window.move({ direction = "up" }))
 hl.bind(secondMod .. " + down", hl.dsp.window.move({ direction = "down" }))
 
+hl.bind("Print", hl.dsp.exec_cmd("grim ~/Pictures/screenshot/screenshot-$(date +%Y%m%d-%H%M%S).png"))
+hl.bind(
+	"SHIFT + Print",
+	hl.dsp.exec_cmd('grim -g "$(slurp)" ~/Pictures/screenshot/screenshot-$(date +%Y%m%d-%H%M%S).png')
+)
+hl.bind(
+	"CTRL + Print",
+	hl.dsp.exec_cmd(
+		"grim -o \"$(hyprctl activeworkspace -j | jq -r '.monitor')\" ~/Pictures/screenshot/screenshot-$(date +%Y%m%d-%H%M%S).png"
+	)
+)
+
 hl.bind(secondMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(secondMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 
