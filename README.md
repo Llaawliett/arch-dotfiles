@@ -28,6 +28,9 @@ ideas, and build your own setup <3
 > Terminal Lover ♥
 
 ![](./assets/screenshot-clearWorkspace1.png)
+
 ![](./assets/screenshot-nvim.png)
+
 ![](./assets/screenshot-clearWorkspace2.png)
+
 ![](./assets/screenshot-tmux.png)
