@@ -41,7 +41,7 @@ local terminal = "kitty"
 local fileManager = "dolphin"
 local browser = "firefox"
 local music = "strawberry"
-local launcher = "rofi -show drun -show-icons"
+local launcher = "rofi -show drun"
 local runner = "rofi -show run"
 local vpn = "flclashx"
 
@@ -99,7 +99,7 @@ hl.config({
 		gaps_in = 5,
 		gaps_out = 10,
 
-		border_size = 3,
+		border_size = 5,
 
 		col = {
 			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
@@ -308,6 +308,14 @@ hl.bind(
 	"CTRL + Print",
 	hl.dsp.exec_cmd(
 		"grim -o \"$(hyprctl activeworkspace -j | jq -r '.monitor')\" ~/Pictures/screenshot/screenshot-$(date +%Y%m%d-%H%M%S).png"
+	)
+)
+
+-- Super+Shift+S: скриншот выделенной области, сохранить в файл и в буфер обмена
+hl.bind(
+	"SUPER + SHIFT + X",
+	hl.dsp.exec_cmd(
+		'mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy'
 	)
 )
 

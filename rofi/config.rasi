@@ -1,2 +1,88 @@
+configuration {
+	modi:				"drun";
+	font:				"JetBrainsMono Nerd";
+	display-drun: 			"";
+	sidebar-mode: 			false;
+	hover-select:			true;
+	me-select-entry:		"";
+	me-accept-entry:		[MousePrimary];
+}
 
-@theme "/home/sini4ka/.local/share/rofi/themes/spotlight-dark.rasi"
+@theme "/dev/null"
+
+* {
+	bg:				#706C61;
+	fg:				#FFFFFF;
+	tnb:				#333333;
+	window-bg:			#E1F4F3;
+
+	background-color:		@fg;
+	text-color:			@tnb;
+}
+
+window {
+	transparency:                   "real";
+	border:				5px;
+	border-color:			@window-bg;
+	width:			    	40%;
+	y-offset:                       10px;
+	padding: 			20px;
+	location: 			center;
+}
+
+prompt { enabled: false; }
+
+entry {
+	placeholder:			"Applications";
+	expand:                         true;
+	padding:			25px 0% 20px 2.5%;
+	background-color:               @bg;
+        placeholder-color:              @fg;
+	text-color:			@fg;
+	border:				3px;
+	border-color:			@fg;
+	border-radius:			2px;
+}
+
+inputbar {
+	children: 			[ prompt, entry ];
+	background-color:               @bg;
+	text-color:                     @fg;
+	expand:                         false;
+	border-radius:                  8px;
+	padding:                        8px;
+}
+
+listview {
+	columns:                        1;
+	lines:	                        8;
+	cycle:                          false;
+	dynamic:                        true;
+	layout:                         vertical;
+}
+
+mainbox {
+	children:                       [ inputbar, listview ];
+	spacing:                       	2%;
+	padding:                        2% 1% 2% 1%;
+}
+
+element {
+	orientation:                    vertical;
+	border-radius:                  0%;
+	padding:                        1.5% 0% 1.5% 0%;
+}
+
+element-text {
+	expand:                         true;
+	vertical-align:                 0.5;
+	margin:                         0.5% 3% 0% 3%;
+	background-color:               inherit;
+        text-color:                     inherit;
+}
+
+element selected {
+	background-color:               @tnb;
+	text-color:                     @fg;
+	border-radius:                  6px;
+}

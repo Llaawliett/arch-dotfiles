@@ -1,134 +1,182 @@
-/*@import url('../../.cache/wal/colors-waybar.css');*/
+/* ===== COLORS ===== */
+@define-color bg #555555;
+@define-color fg #fff4d2;
 
-@define-color background #1E1E28;
-@define-color foreground #E8E4D9;
-@define-color color1 #B08D5B;
-@define-color color2 #5C6B7A;
-@define-color teal #8966A8;
-@define-color pink #BEA6D3;
+@define-color blue #83a598;
+@define-color blue-dark #458588;
 
+@define-color pink #d3869b;
+
+@define-color green #8ec07c;
+@define-color green-dark #689d68;
+
+@define-color red #ea6962;
+@define-color red-dark #cc241d;
+
+@define-color orange #e78a4e;
+@define-color yellow #f6c657;
+@define-color yellow-soft #d8a657;
+
+@define-color white-soft #fff4d2;
+@define-color gray #555555;
+
+/* ===== GLOBAL ===== */
 * {
-  font-size: 14px;
-  font-family:
-    "CaskaydiaCove Nerd Font", "Font Awesome 6 Free Solid",
-    "Font Awesome 6 Free Regular", "Font Awesome 6 Brands Regular",
-    "Symbols Nerd Font Mono", "Symbols Nerd Font";
-  transition: all 0.5s ease;
-}
-window#waybar {
-  all: unset;
-}
-.modules-left {
-  margin: 10px 0px 0px 10px;
-}
-.modules-center {
-  margin: 10px 0px 0px 0px;
-  color: pink;
-}
-.modules-right {
-  margin: 10px 10px 0px 0px;
-}
-tooltip {
-  background: @background;
-  border: 1px solid alpha(@color1, 0.8);
-  color: @foreground;
-}
-#clock:hover,
-#custom-updates:hover,
-#custom-notification:hover,
-#bluetooth:hover,
-#network:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover,
-#pulseaudio:hover,
-#language:hover,
-#mpris:hover,
-#custom-control-center:hover,
-#custom-updates:hover label {
-  color: @teal;
-}
-
-#custom-dnd:hover,
-#custom-tray-icon:hover,
-#custom-colortemp:hover {
-  color: @color2;
-}
-
-.modules-right .module,
-.modules-left .module,
-.modules-center .module {
-  color: @pink;
-}
-
-#mpris,
-#clock,
-#workspaces,
-#tray,
-#perf,
-#misc,
-#audio,
-#connection,
-#custom-control-center,
-#custom-updates,
-#privacy {
-  color: @foreground;
-  padding: 10px 15px;
-  margin: 0px 5px;
-  border-radius: 5px;
-  background: alpha(@background, 1);
-  border: 1px solid alpha(@color2, 0.8);
-  box-shadow: 0px 0px 2px alpha(@color2, 1);
-}
-
-#audio .module,
-#connection .module,
-#misc .module {
-  margin: 0px 5px;
-}
-
-#workspaces {
-  margin-left: 0px;
-}
-#custom-control-center {
-  margin-right: 0px;
-}
-
-#workspaces button {
-  all: unset;
-  padding: 0px 10px;
-}
-#workspaces button label {
-  color: alpha(@foreground, 0.5);
-}
-#workspaces button:hover label {
-  color: alpha(@foreground, 0.85);
-}
-#workspaces button.active label {
-  color: alpha(@foreground, 1);
-}
-
-#tray #tray {
-  /* Inner tray element. We don't want to style this.*/
-  background-color: transparent;
-  padding: 0px 5px 0px 15px;
-  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  border-radius: 8;
   border: none;
+  text-shadow: none;
+  transition: none;
+  box-shadow: none;
 }
-#tray menu {
-  background-color: alpha(@background, 0.9);
-  border: solid 1px alpha(@color1, 0.8);
+
+/* the whole window */
+window#waybar {
+  color: @fg;
+  background: none;
+  font-family: JetBrainsMono Nerd;
+  font-size: 14pt;
+  font-weight: 900;
 }
-#tray menu separator {
-  background-color: alpha(@color1, 0.8);
+
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 3pt;
+  background: @bg;
 }
-#tray menu label {
-  color: @foreground;
+
+#window,
+#disk,
+#cpu,
+#custom-cpu_temp,
+#custom-cpu_temp.critical,
+#backlight,
+#custom-memory,
+#pulseaudio,
+#pulseaudio.muted,
+#battery,
+#battery.critical,
+#battery.warning,
+#network,
+#clock {
+  padding: 0 1.5pt;
 }
-#tray menu menuitem:hover {
-  background-color: @foreground;
+
+#custom-launcher {
+  color: @blue;
+  border: 2pt solid @blue;
+  padding: 0 6pt;
 }
-#tray menu menuitem:hover label {
-  color: @background;
+
+/* ===== WORKSPACES ===== */
+#workspaces button {
+  color: @white-soft;
+  background: @bg;
+  border: 2pt solid @white-soft;
+  margin-right: 3pt;
+  min-width: 15pt;
+  padding: 0 3.75pt;
+}
+
+#workspaces button:last-child {
+  margin-right: 0;
+}
+
+#workspaces button:hover {
+  color: @pink;
+  border-color: @pink;
+}
+
+#workspaces button.visible,
+#workspaces button.visible:hover {
+  color: @green;
+  border-color: @green;
+}
+
+#workspaces button.urgent {
+  color: @red;
+  border-color: @red;
+}
+
+/* ===== MODULES ===== */
+#window {
+  border: 2pt solid @pink;
+}
+
+#tray {
+  background: @bg;
+  border: 2pt solid @orange;
+  padding: 0 6pt;
+}
+
+#disk {
+  border: 2pt solid @red;
+}
+
+#cpu {
+  border: 2pt solid @orange;
+}
+
+#custom-cpu_temp {
+  border: 2pt solid @yellow-soft;
+}
+
+#custom-cpu_temp.critical {
+  color: @red-dark;
+  border: 2pt solid @red-dark;
+}
+
+#custom-cpu_temp.unknown {
+  border: 2pt solid @gray;
+}
+
+#backlight {
+  border: 2pt solid @yellow;
+}
+
+#custom-memory {
+  border: 2pt solid @blue-dark;
+}
+
+#pulseaudio {
+  border: 2pt solid @blue;
+}
+
+#pulseaudio.muted {
+  border: 2pt solid @red;
+  color: @red;
+}
+
+#battery {
+  border: 2pt solid @green-dark;
+}
+
+#battery.critical {
+  border: 2pt solid @red-dark;
+}
+
+#battery.warning {
+  border: 2pt solid @orange;
+}
+
+#clock {
+  border: 2pt solid @green;
+}
+
+#network {
+  border: 2pt solid @pink;
+}
+
+#mode {
+  background: @bg;
+  color: @blue;
+  border: 2pt solid @blue;
+  padding: 0 7.5pt;
+}
+
+#custom-cwd {
+  padding: 0 10px;
 }
